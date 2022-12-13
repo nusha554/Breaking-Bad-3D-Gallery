@@ -1,29 +1,34 @@
-import React, { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
-import Cube from "./Cube";
+import React from "react";
 import styled from "styled-components";
-import { OrbitControls } from "@react-three/drei";
+import CubeContainer from "./CubeContainer";
+import useGetApiData from "./helpers/getApiData";
+import CharacterNameHeader from "./CharacterNameHeader"
 
 const Grid3D = () => {
+
+  const characters = useGetApiData();
+
+  
   return (
     <Wrapper>
-      <Canvas className="canvas">
-        <OrbitControls enableZoom={false} />
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[-2, 5, 2]} intensity={1} />
-        <Suspense fallback={null}>
-          <Cube />
-        </Suspense>
-      </Canvas>
+      <ol className="character-item-container">
+        {characters?.map((character) => {
+          return (
+            <ol className="character-item" key={character.id}>
+              <CharacterNameHeader name={character.name}/>
+               <CubeContainer img={character.image}/>
+            </ol>
+          );
+        })}
+      </ol>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
   canvas {
-    height: 500px;
-    background: orange;
+    height: 400px;
   }
 `;
 
-export default Grid3D;
+export default Grid3D

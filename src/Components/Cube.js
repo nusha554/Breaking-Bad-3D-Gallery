@@ -1,17 +1,16 @@
 import React from "react";
-
 import { useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three";
-import texture from "./1.jpeg";
 
-const Cube = () => {
-    const colorMap = useLoader(TextureLoader, texture);
 
+const Cube = ({ img }) => {
+  const colorMap = useLoader(TextureLoader, img);
+  
 
   return (
-    <mesh rotation={[90,0,20]}>
+    <mesh rotation={[30, 0, 100]}>
       <boxBufferGeometry attach="geometry" args={[3, 3, 3]} />
-      <meshStandardMaterial map={colorMap}/>
+      <meshBasicMaterial map={colorMap} />
     </mesh>
   );
 };
