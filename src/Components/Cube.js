@@ -8,7 +8,6 @@ const Cube = ({ img }) => {
 
   return (
     <mesh rotation={[Math.PI / 2, 0, 0]} >
-    
       <boxBufferGeometry  args={[2, 2, 2]} />
       <meshBasicMaterial map={colorMap} />
     </mesh>
