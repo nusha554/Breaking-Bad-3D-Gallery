@@ -14,10 +14,13 @@ const Grid3D = () => {
       <ol className="character-item-container">
         {characters?.map((character) => {
           return (
-            <ol className="character-item" key={character.id}>
+            <div style={{display: 'inline-block', width: '20%', height: '20%'}}>
+            <ol className="character-item" key={character.id} >
               <CharacterNameHeader name={character.name}/>
                <CubeContainer img={character.image}/>
             </ol>
+            </div>
+
           );
         })}
       </ol>

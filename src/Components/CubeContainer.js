@@ -7,10 +7,10 @@ import { OrbitControls } from "@react-three/drei";
 const CubeContainer = ({ img }) => {
   return (
     <Canvas className="canvas">
-      <OrbitControls enableZoom={false} />
+      <OrbitControls enableZoom={false} autoRotate={true} autoRotateSpeed={4}/>
       <ambientLight intensity={0.5} />
       <directionalLight position={[-2, 5, 2]} intensity={1} />
-      <Cube img={img} />
+      <Cube img={img}/>
     </Canvas>
   );
 };
