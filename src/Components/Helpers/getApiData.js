@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { API_URL_RICK_AND_MORTY, API_URL_BREAKING_BAD } from "../../config";
+// import { API_URL_RICK_AND_MORTY, API_URL_BREAKING_BAD } from "../../config";
+import { API_URL_RICK_AND_MORTY } from "../../config";
 
 const useGetApiData = () => {
   const [characters, setCharacters] = useState([]);

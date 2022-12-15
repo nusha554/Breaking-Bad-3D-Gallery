@@ -20,6 +20,7 @@ const Grid3D = () => {
     } else {
       setSetFilteredCharacters([...charactersResult]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
 
   useEffect(() => {
