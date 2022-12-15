@@ -1,1 +1,1 @@
-3d gallery
+3D gallery build with React and Three.js.
