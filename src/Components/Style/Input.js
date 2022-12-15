@@ -20,10 +20,11 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
+  position: relative;
+  top: -0.5rem;
   line-height: 1;
   background-color: transparent;
   width: 100%;
-  height: 1rem;
   padding-top: -5rem;
   margin-left: ${(props) => (props.barOpened ? "" : "0rem")};
   border: none;
