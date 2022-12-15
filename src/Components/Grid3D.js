@@ -1,16 +1,39 @@
 import { React, useState, useEffect } from "react";
-import styled from "styled-components";
+import { Wrapper, CharactersContainer, Character } from "./Style/Grid";
 import CubeContainer from "./CubeContainer";
-import useGetApiData from "./helpers/getApiData";
+import useGetApiData from "./Helpers/getApiData";
 import CharacterNameHeader from "./CharacterNameHeader";
 import InputFilter from "./InputFilter";
 import Description from "./Description";
+import EmptyResult from "./EmptyResult";
 
 const Grid3D = () => {
   const charactersResult = useGetApiData();
   const [filter, setFilter] = useState("");
   const [showDescription, setShowDescription] = useState(false);
   const [characterId, setCharacterId] = useState("");
+  const [filteredCharacters, setSetFilteredCharacters] = useState([]);
+
+  useEffect(() => {
+    if (filter) {
+      filterCharacters();
+    } else {
+      setSetFilteredCharacters([...charactersResult]);
+    }
+  }, [filter]);
+
+  useEffect(() => {
+    if (charactersResult) {
+      setSetFilteredCharacters([...charactersResult]);
+    }
+  }, [charactersResult]);
+
+  const filterCharacters = () => {
+    const filtered = charactersResult.filter((character) =>
+      character.name.toLowerCase().includes(filter)
+    );
+    setSetFilteredCharacters([...filtered]);
+  };
 
   const getDescription = (id) => {
     if (showDescription) setShowDescription(false);
@@ -22,38 +45,29 @@ const Grid3D = () => {
   return (
     <Wrapper>
       <InputFilter filter={filter} setFilter={setFilter} />
-      <ol className="character-item-container">
-        {/* maybe write here more CLEAN_CODE */}
-        {charactersResult
-          .filter((character) => character.name.toLowerCase().includes(filter))
-          .map((character) => {
+      <CharactersContainer>
+        {filteredCharacters?.length > 0 ? (
+          filteredCharacters.map((character) => {
             return (
-              <div
-                style={{ display: "inline-block", width: "20%", height: "20%" }}
+              <Character
+                className="character-item"
+                key={character.id}
+                onClick={() => getDescription(character.id)}
               >
-                <ol
-                  className="character-item"
-                  key={character.id}
-                  onClick={() => getDescription(character.id)}
-                >
-                  <CharacterNameHeader name={character.name} />
-                  <CubeContainer img={character.image} />
-                  {showDescription && character.id === characterId ? (
-                    <Description id={characterId} characters={charactersResult}/>
-                  ) : ''}
-                </ol>
-              </div>
+                <CharacterNameHeader name={character.name} />
+                <CubeContainer img={character.image} />
+                {showDescription && character.id === characterId ? (
+                  <Description id={characterId} characters={charactersResult} />
+                ) : null}
+              </Character>
             );
-          })}
-      </ol>
+          })
+        ) : (
+          <EmptyResult />
+        )}
+      </CharactersContainer>
     </Wrapper>
   );
 };
-
-const Wrapper = styled.div`
-  canvas {
-    height: 400px;
-  }
-`;
 
 export default Grid3D;

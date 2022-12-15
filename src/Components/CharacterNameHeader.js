@@ -1,7 +1,8 @@
 import React from "react";
+import { NameHeader } from "./Style/Grid";
 
 const CharacterNameHeader = ({ name }) => {
-  return <div>{name}</div>;
+  return <NameHeader>{name}</NameHeader>;
 };
 
 export default CharacterNameHeader;
