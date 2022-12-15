@@ -3,7 +3,7 @@ import "./styles.css";
 import { FaSearch } from "react-icons/fa";
 
 export const Form = styled.form`
-    margin: 3rem;
+  margin: 3rem;
   left: 0.9rem;
   position: relative;
   display: inline-block;

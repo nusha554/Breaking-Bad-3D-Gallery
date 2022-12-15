@@ -10,7 +10,7 @@ const Description = ({ id, characters }) => {
       characters?.filter((character) => character.id === id)
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
+  }, []);
 
   useEffect(() => {
     if (rawTextPerCharacter) {
@@ -26,12 +26,11 @@ const Description = ({ id, characters }) => {
     }
   }, [rawTextPerCharacter]);
 
-  return <DescriptionContainer>
-    <DescriptionText>
-    {descriptionText}
-    </DescriptionText>
-
-    </DescriptionContainer>;
+  return (
+    <DescriptionContainer>
+      <DescriptionText>{descriptionText}</DescriptionText>
+    </DescriptionContainer>
+  );
 };
 
 export default Description;
