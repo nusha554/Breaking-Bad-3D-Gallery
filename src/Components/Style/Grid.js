@@ -7,6 +7,13 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const Header = styled.div`
+  text-align: center;
+  font-size: 5rem;
+  font-weight: bolder;
+  padding: 1.9rem;
+`;
+
 export const InputFilter = styled.div``;
 
 export const CharactersContainer = styled.ol`
@@ -34,11 +41,18 @@ export const NameHeader = styled.div`
 `;
 
 export const DescriptionContainer = styled.div`
+  background-color: rgba(165, 192, 91, 0.5);
   display: grid;
   position: relative;
-  top: -5rem;
-  margin: -1rem auto -5rem auto;
+  top: -4rem;
+  margin: -2.5rem auto -5rem auto;
+  padding: 1.5rem;
+  border-radius: 3rem;
+`;
+
+export const DescriptionText = styled.div`
   font-weight: 300;
+  font-size: 1rem;
 `;
 
 export const EmptyResultContainer = styled.div`

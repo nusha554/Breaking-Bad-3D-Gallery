@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { Wrapper, CharactersContainer, Character } from "./Style/Grid";
+import { Wrapper, Header, CharactersContainer, Character } from "./Style/Grid";
 import CubeContainer from "./CubeContainer";
 import useGetApiData from "./Helpers/getApiData";
 import CharacterNameHeader from "./CharacterNameHeader";
@@ -44,6 +44,7 @@ const Grid3D = () => {
 
   return (
     <Wrapper>
+      <Header> 3D Gallery </Header>
       <InputFilter filter={filter} setFilter={setFilter} />
       <CharactersContainer>
         {filteredCharacters?.length > 0 ? (

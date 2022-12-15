@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { DescriptionContainer } from "./Style/Grid";
+import { DescriptionContainer, DescriptionText } from "./Style/Grid";
 
 const Description = ({ id, characters }) => {
   const [rawTextPerCharacter, setRawTextPerCharacter] = useState("");
@@ -25,7 +25,12 @@ const Description = ({ id, characters }) => {
     }
   }, [rawTextPerCharacter]);
 
-  return <DescriptionContainer>{descriptionText}</DescriptionContainer>;
+  return <DescriptionContainer>
+    <DescriptionText>
+    {descriptionText}
+    </DescriptionText>
+
+    </DescriptionContainer>;
 };
 
 export default Description;
