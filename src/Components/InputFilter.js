@@ -43,7 +43,7 @@ const InputFilter = ({ filter, setFilter }) => {
         ref={inputFocus}
         value={filter}
         barOpened={barOpened}
-        placeholder="Search for a character..."
+        placeholder= {barOpened ? "Search for a character..." : "" }
       />
     </Form>
   );
