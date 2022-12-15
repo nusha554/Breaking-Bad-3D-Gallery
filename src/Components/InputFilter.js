@@ -14,6 +14,7 @@ const InputFilter = ({ filter, setFilter }) => {
 
   useEffect(() => {
     if (!barOpened) setFilter("");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [barOpened]);
 
   return (
