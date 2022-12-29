@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { React, useState, useEffect } from "react";
 import { Wrapper, Header, CharactersContainer, Character } from "./Style/Grid";
 import CubeContainer from "./CubeContainer";
@@ -20,7 +21,6 @@ const Grid3D = () => {
     } else {
       setSetFilteredCharacters([...charactersResult]);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
 
   useEffect(() => {

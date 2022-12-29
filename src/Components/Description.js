@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { DescriptionContainer, DescriptionText } from "./Style/Grid";
 
@@ -9,7 +10,6 @@ const Description = ({ id, characters }) => {
     setRawTextPerCharacter(
       characters?.filter((character) => character.id === id)
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

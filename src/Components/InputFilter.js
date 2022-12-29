@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useRef, useState, useEffect } from "react";
 import { Form, Button, Input, SearchIcon } from "./Style/Input";
 
@@ -14,7 +15,6 @@ const InputFilter = ({ filter, setFilter }) => {
 
   useEffect(() => {
     if (!barOpened) setFilter("");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [barOpened]);
 
   return (
@@ -43,7 +43,7 @@ const InputFilter = ({ filter, setFilter }) => {
         ref={inputFocus}
         value={filter}
         barOpened={barOpened}
-        placeholder= {barOpened ? "Search for a character..." : "" }
+        placeholder={barOpened ? "Search for a character..." : ""}
       />
     </Form>
   );
