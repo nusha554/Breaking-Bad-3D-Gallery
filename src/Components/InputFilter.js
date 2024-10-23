@@ -2,7 +2,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Form, Button, Input, SearchIcon } from "./Style/Input";
 
-const InputFilter = ({ filter, setFilter }) => {
+const InputFilter = (props) => {
+  const { filter, setFilter } = props;
   const [barOpened, setBarOpened] = useState(false);
   const formRef = useRef();
   const inputFocus = useRef();

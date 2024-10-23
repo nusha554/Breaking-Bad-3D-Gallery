@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useMemo } from "react";
 import { Wrapper, Header, CharactersContainer, Character } from "./Style/Grid";
 import CubeContainer from "./CubeContainer";
 import useGetApiData from "./Helpers/getApiData";
@@ -15,26 +14,30 @@ const Grid3D = () => {
   const [characterId, setCharacterId] = useState("");
   const [filteredCharacters, setSetFilteredCharacters] = useState([]);
 
+  const characterData = useMemo(() => {
+    return charactersResult;
+  });
+
   useEffect(() => {
+    const filterCharacters = () => {
+      const filtered = characterData.filter((character) =>
+        character.name.toLowerCase().includes(filter)
+      );
+      setSetFilteredCharacters([...filtered]);
+    };
+
     if (filter) {
       filterCharacters();
     } else {
-      setSetFilteredCharacters([...charactersResult]);
+      setSetFilteredCharacters([...characterData]);
     }
-  }, [filter]);
+  }, [filter, characterData]);
 
   useEffect(() => {
     if (charactersResult) {
       setSetFilteredCharacters([...charactersResult]);
     }
   }, [charactersResult]);
-
-  const filterCharacters = () => {
-    const filtered = charactersResult.filter((character) =>
-      character.name.toLowerCase().includes(filter)
-    );
-    setSetFilteredCharacters([...filtered]);
-  };
 
   const getDescription = (id) => {
     if (showDescription) setShowDescription(false);
